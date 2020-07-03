@@ -35,7 +35,7 @@ namespace FN.Store.UI
             }
             else
             {
-                app.UseExceptionHandler("/");
+                app.UseExceptionHandler("/Home/Index");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -50,7 +50,10 @@ namespace FN.Store.UI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
+                // endpoints.MapControllerRoute(
+                //     name: "sobre",
+                //     pattern: "{controller=Home}/{action=Sobre}");
             });
         }
     }
