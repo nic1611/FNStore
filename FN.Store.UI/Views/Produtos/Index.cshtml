@@ -1,38 +1,39 @@
 <h2>Listagem de produtos</h2>
 <div>
-    <a href="~/Produtos/AddEdit">Novo produto</a>
+    <a href="~/Produtos/AddEdit" class="btn btn-primary">Novo produto</a>
 </div>
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Preco</th>
-            <th>Tipo</th>
-            <th>Qtde</th>
-            <th>DataCadastro</th>
-            <th></th>
-        </tr>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var produto in Model)
-        {
-            <tr id="produto-@produto.Id">
-                <td>@produto.Id</td>
-                <td>@produto.Nome</td>
-                <td>@produto.Preco</td>
-                <td>@produto.Tipo</td>
-                <td>@produto.Qtde</td>
-                <td>@produto.DataCadastro</td>
-                <td>
-                    <a href="~/Produtos/AddEdit/@produto.Id">Editar</a>
-                    <button onclick="DelProd(@produto.Id, '@produto.Nome')">Deletar</button>
-                </td>
+<div class="mt-4">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Preco</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Qtde</th>
+                <th scope="col">DataCadastro</th>
+                <th scope="col"></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var produto in Model)
+            {
+                <tr id="produto-@produto.Id">
+                    <th scope="row">@produto.Id</th>
+                    <td>@produto.Nome</td>
+                    <td>@produto.Preco</td>
+                    <td>@produto.Tipo</td>
+                    <td>@produto.Qtde</td>
+                    <td>@produto.DataCadastro</td>
+                    <td>
+                        <a href="~/Produtos/AddEdit/@produto.Id" class="btn btn-sm btn-outline-primary">Editar</a>
+                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="DelProd(@produto.Id, '@produto.Nome')">Deletar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 <script>
     function DelProd(id, nome) {
