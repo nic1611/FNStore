@@ -32,6 +32,9 @@ namespace FN.Store.UI.Controllers
             {
                 produto = ctx.Produtos.Find(id);
             }
+
+            var tipos = ctx.TipoDeProdutos.ToList();
+            ViewBag.Tipos = tipos;
             return View(produto);
         }
 

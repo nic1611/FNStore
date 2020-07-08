@@ -10,15 +10,32 @@ namespace FN.Store.UI.Data
             DbContextOptions<FNStoreDataContext> options
             ) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
+            //var alimento = new TipoDeProduto() { Nome = "Alimento" };
+
+            //TipoDeProdutos.AddRange(new List<TipoDeProduto>()
+            //{
+            //    new TipoDeProduto() { Nome = "Eletrônico" },
+            //    new TipoDeProduto() { Nome = "Limpeza" },
+            //    new TipoDeProduto() { Nome = "Bebidas" },
+            //    new TipoDeProduto() { Nome = "Instrumentos" },
+            //    new TipoDeProduto() { Nome = "Ferragens" },
+            //    new TipoDeProduto() { Nome = "Mecanico" },
+            //    new TipoDeProduto() { Nome = "Outros" },
+            //});
             //Produtos.AddRange(new List<Produto>(){
-            //    new Produto(){Id=0, Nome="Picanha", Preco=98.9M, Qtde=2, Tipo="Alimento"},
-            //    new Produto(){Id=0, Nome="Picanha", Preco=98.9M, Qtde=2, Tipo="Alimento"},
-            //    new Produto(){Id=0, Nome="Picanha", Preco=98.9M, Qtde=2, Tipo="Alimento"},
+            //    new Produto(){Nome="Picanha", Preco=70.9M, Qtde=2, TipoDeProduto=alimento},
+            //    new Produto(){Nome="Maça", Preco=1.9M, Qtde=2, TipoDeProduto=alimento},
+            //    new Produto(){Nome="Banana", Preco=1.9M, Qtde=2, TipoDeProduto=alimento},
+            //    new Produto(){Nome="Feijão", Preco=8.9M, Qtde=2, TipoDeProduto=alimento},
+            //    new Produto(){Nome="Batata", Preco=2.9M, Qtde=2, TipoDeProduto=alimento},
             //});
             //SaveChanges();
         }
 
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<TipoDeProduto> TipoDeProdutos { get; set; }
+
     }
 }

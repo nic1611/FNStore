@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FN.Store.UI.Models
 {
-    public class TipoDeProduto
+    [Table(nameof(TipoDeProduto))]
+    public class TipoDeProduto : Entity
     {
-        public int Id { get; set; }
+        [Required, Column(TypeName ="varchar(100)")]
         public string Nome { get; set; }
+
+        public virtual ICollection<Produto> Produtos { get; set; }
     }
 }
