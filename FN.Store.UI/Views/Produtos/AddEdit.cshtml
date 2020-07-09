@@ -1,6 +1,6 @@
 ﻿@model FN.Store.UI.Models.Produto
 
-@{ 
+@{
     ViewBag.Title = $"{(Model.Id == 0 ? "Adicionar" : "Editar")} Produto";
 }
 
@@ -10,27 +10,48 @@
     <div class="form-group">
         <label for="txtNome">Nome:</label>
         <input class="form-control" type="text" name="nome" id="txtNome" value="@Model.Nome" />
+        <small>
+            @Html.ValidationMessageFor(m => m.Nome, null, new { @class = "text-danger" })
+        </small>
     </div>
     <div class="form-group">
         <label>Preço:</label>
         <input class="form-control" type="text" name="preco" value="@Model.Preco" />
+        <small>
+            @Html.ValidationMessageFor(m => m.Preco, null, new { @class = "text-danger" })
+        </small>
+
     </div>
     <div class="form-group">
         <label>Tipo:</label>
         <select name="TiposDeProdutoId" class="form-control">
+            <option value="">Selecione... </option>
             @foreach (FN.Store.UI.Models.TipoDeProduto tipo in ViewBag.Tipos)
             {
                 <option @(tipo.Id == Model.TipoDeProdutoId ? "selected" : "")
-                        value="@tipo.Id">@tipo.Nome</option>
+                        value="@tipo.Id">
+                    @tipo.Nome
+                </option>
             }
         </select>
+        <small>
+            @Html.ValidationMessageFor(m => m.TipoDeProdutoId, null, new { @class = "text-danger" })
+        </small>
+
     </div>
     <div class="form-group">
         <label>Quantidade:</label>
         <input class="form-control" type="text" name="qtde" value="@Model.Qtde" />
+        <small>
+            @Html.ValidationMessageFor(m => m.Qtde, null, new { @class = "text-danger" })
+        </small>
+
     </div>
     <div class="form-group">
         <button class="btn btn-outline-secondary" type="submit">Salvar</button>
-        <a class="btn btn-outline-info" href="~/Produtos">Voltar</a>
+        <a class="btn btn-outline-info" href="@Url.Action("Index")">Voltar</a>
     </div>
 </form>
+
+@section scripts{
+}

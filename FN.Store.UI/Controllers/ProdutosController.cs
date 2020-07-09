@@ -42,17 +42,24 @@ namespace FN.Store.UI.Controllers
         [HttpPost]
         public IActionResult AddEdit(Produto produto)
         {
-            if (produto.Id == 0)
+            if (ModelState.IsValid)
             {
-                ctx.Add(produto);
-            }
-            else
-            {
-                ctx.Entry(produto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            }
+                if (produto.Id == 0)
+                {
+                    ctx.Add(produto);
+                }
+                else
+                {
+                    ctx.Entry(produto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
 
-            ctx.SaveChanges();
-            return RedirectToAction("Index");
+                ctx.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            var tipos = ctx.TipoDeProdutos.ToList();
+            ViewBag.Tipos = tipos;
+            return View(produto);
+
         }
 
         [HttpDelete]

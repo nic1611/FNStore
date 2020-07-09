@@ -4,7 +4,7 @@
 
 <h2>@ViewBag.Title</h2>
 <div>
-    <a href="~/Produtos/AddEdit" class="btn btn-primary">Novo produto</a>
+    <a href="@Url.Action("AddEdit")" class="btn btn-primary">Novo produto</a>
 </div>
 <div class="mt-4">
     <table class="table table-striped">
@@ -30,7 +30,7 @@
                     <td>@produto.Qtde</td>
                     <td>@produto.DataCadastro</td>
                     <td>
-                        <a href="~/Produtos/AddEdit/@produto.Id" class="btn btn-sm btn-outline-primary">Editar</a>
+                        <a href="@Url.Action("AddEdit", new { id=produto.Id})" class="btn btn-sm btn-outline-primary">Editar</a>
                         <button type="button" class="btn btn-outline-danger btn-sm" onclick="DelProd(@produto.Id, '@produto.Nome')">Deletar</button>
                     </td>
                 </tr>
