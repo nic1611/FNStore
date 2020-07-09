@@ -3,6 +3,7 @@ using System.Linq;
 using FN.Store.UI.Data;
 using FN.Store.UI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FN.Store.UI.Controllers
 {
@@ -19,7 +20,7 @@ namespace FN.Store.UI.Controllers
         {
             IList<Produto> produtos = null;
 
-            produtos = ctx.Produtos.ToList();
+            produtos = ctx.Produtos.Include(e => e.TipoDeProduto).ToList();
 
             return View(produtos);
         }
