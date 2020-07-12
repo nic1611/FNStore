@@ -31,11 +31,13 @@ namespace FN.Store.UI.Data
             //    new Produto(){Nome="Feijão", Preco=8.9M, Qtde=2, TipoDeProduto=alimento},
             //    new Produto(){Nome="Batata", Preco=2.9M, Qtde=2, TipoDeProduto=alimento},
             //});
+            //Usuarios.Add(new Usuario() { Nome = "Nicolas", Email = "email@email.com", Senha = "123" });
             //SaveChanges();
         }
 
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<TipoDeProduto> TipoDeProdutos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
     }
 }

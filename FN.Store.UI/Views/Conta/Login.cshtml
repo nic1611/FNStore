@@ -1,0 +1,30 @@
+﻿@model FN.Store.UI.Models.LoginVM
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>@ViewBag.Title</h2>
+<form method="post">
+    <div class="form-group">
+        <label>E-mail</label>
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", autofocus = "" })
+        <small>
+            @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+        </small>
+    </div>
+    <div class="form-group">
+        <label>E-mail</label>
+        @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", autofocus = "" })
+        <small>
+            @Html.ValidationMessageFor(model => model.Senha , null, new { @class = "text-danger" })
+        </small>
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.PermanecerLogado, new { @class = "form-check-input", autofocus = "" })
+        @Html.LabelFor(model => model.PermanecerLogado)
+    </div>
+    <div class="form-group form-check">
+        <button class="btn btn-outline-secondary">Salvar</button>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-warning">content</a>
+    </div>
+</form>

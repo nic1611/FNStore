@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using FN.Store.UI.Data;
 using FN.Store.UI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FN.Store.UI.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         private readonly FNStoreDataContext ctx;
