@@ -1,3 +1,4 @@
+using FN.Store.UI.Infra.Helpers;
 using FN.Store.UI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace FN.Store.UI.Data
             //    new Produto(){Nome="Feijão", Preco=8.9M, Qtde=2, TipoDeProduto=alimento},
             //    new Produto(){Nome="Batata", Preco=2.9M, Qtde=2, TipoDeProduto=alimento},
             //});
-            //Usuarios.Add(new Usuario() { Nome = "Nicolas", Email = "email@email.com", Senha = "123" });
+            //Usuarios.Add(new Usuario() { Nome = "Nicolas", Email = "email@email.com", Senha = "123".Encrypt() });
             //SaveChanges();
         }
 

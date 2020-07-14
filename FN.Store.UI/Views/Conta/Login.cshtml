@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         <label>E-mail</label>
-        @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", autofocus = "" })
+        @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", autofocus = "", type="password"})
         <small>
             @Html.ValidationMessageFor(model => model.Senha , null, new { @class = "text-danger" })
         </small>
@@ -24,7 +24,7 @@
         @Html.LabelFor(model => model.PermanecerLogado)
     </div>
     <div class="form-group form-check">
-        <button class="btn btn-outline-secondary">Salvar</button>
-        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-warning">content</a>
+        <button class="btn btn-outline-secondary">Login</button>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-warning">Voltar</a>
     </div>
 </form>

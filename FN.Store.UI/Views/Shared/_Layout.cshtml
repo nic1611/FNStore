@@ -6,22 +6,7 @@
     <title>FN Store | @ViewBag.Title</title>
 </head>
 <body>
-    <div class="">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                <div class="list-group">
-                    <a href="@Url.Action("Index","Home")" class="list-group-item list-group-item-action list-group-item-dark">Pagina inicial</a>
-                    <a href="@Url.Action("Index", "Produtos")" class="list-group-item list-group-item-action list-group-item-dark">Produtos</a>
-                    <a href="@Url.Action("Sobre","Home")" class="list-group-item list-group-item-action list-group-item-dark">Sobre</a>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-    </div>
+    @Html.Partial("_menu")
     <div class="container">
         <div class="row position-relative mt-3">
             <div class="col"></div>

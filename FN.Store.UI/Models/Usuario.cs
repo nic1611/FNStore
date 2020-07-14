@@ -9,10 +9,12 @@ namespace FN.Store.UI.Models
         [Column(TypeName = "varchar(100)")]
         [Required]
         public string Nome { get; set; }
+
         [Column(TypeName = "varchar(80)")]
         [Required]
         public string Email { get; set; }
-        [Column(TypeName = "varchar(50)")]
+
+        [Column(TypeName = "varchar(100)")]
         [Required]
         public string Senha { get; set; }
     }
