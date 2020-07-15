@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Linq;
-using FN.Store.UI.Data;
-using FN.Store.UI.Models;
+using FNStore.Data.EF;
+using FNStore.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FN.Store.UI.Controllers
 {

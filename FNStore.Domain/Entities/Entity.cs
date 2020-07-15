@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace FN.Store.UI.Models
+namespace FNStore.Domain.Entities
 {
     public class Entity
     {
-        [Key]
         public int Id { get; set; }
         public DateTime DataCadastro { get; set; } = DateTime.Now;
 

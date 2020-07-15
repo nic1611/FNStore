@@ -1,9 +1,10 @@
-using FN.Store.UI.Infra.Helpers;
-using FN.Store.UI.Models;
+Ôªøusing FNStore.Data.Maps;
+using FNStore.Domain.Entities;
+using FNStore.Domain.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
-namespace FN.Store.UI.Data
+namespace FNStore.Data.EF
 {
     public class FNStoreDataContext : DbContext
     {
@@ -17,7 +18,7 @@ namespace FN.Store.UI.Data
 
             //TipoDeProdutos.AddRange(new List<TipoDeProduto>()
             //{
-            //    new TipoDeProduto() { Nome = "EletrÙnico" },
+            //    new TipoDeProduto() { Nome = "Eletr√¥nico" },
             //    new TipoDeProduto() { Nome = "Limpeza" },
             //    new TipoDeProduto() { Nome = "Bebidas" },
             //    new TipoDeProduto() { Nome = "Instrumentos" },
@@ -27,9 +28,9 @@ namespace FN.Store.UI.Data
             //});
             //Produtos.AddRange(new List<Produto>(){
             //    new Produto(){Nome="Picanha", Preco=70.9M, Qtde=2, TipoDeProduto=alimento},
-            //    new Produto(){Nome="MaÁa", Preco=1.9M, Qtde=2, TipoDeProduto=alimento},
+            //    new Produto(){Nome="Ma√ßa", Preco=1.9M, Qtde=2, TipoDeProduto=alimento},
             //    new Produto(){Nome="Banana", Preco=1.9M, Qtde=2, TipoDeProduto=alimento},
-            //    new Produto(){Nome="Feij„o", Preco=8.9M, Qtde=2, TipoDeProduto=alimento},
+            //    new Produto(){Nome="Feij√£o", Preco=8.9M, Qtde=2, TipoDeProduto=alimento},
             //    new Produto(){Nome="Batata", Preco=2.9M, Qtde=2, TipoDeProduto=alimento},
             //});
             //Usuarios.Add(new Usuario() { Nome = "Nicolas", Email = "email@email.com", Senha = "123".Encrypt() });
@@ -40,5 +41,11 @@ namespace FN.Store.UI.Data
         public DbSet<TipoDeProduto> TipoDeProdutos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new TipoDeProdutoMap());
+            modelBuilder.ApplyConfiguration(new ProdutoMap());
+        }
     }
 }

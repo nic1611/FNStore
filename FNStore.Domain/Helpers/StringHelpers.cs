@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace FN.Store.UI.Infra.Helpers
+namespace FNStore.Domain.Helpers
 {
     public static class StringHelpers
     {

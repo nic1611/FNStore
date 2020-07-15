@@ -1,6 +1,7 @@
-﻿using FN.Store.UI.Data;
-using FN.Store.UI.Infra.Helpers;
-using FN.Store.UI.Models;
+﻿using FN.Store.UI.Models;
+using FNStore.Data.EF;
+using FNStore.Domain.Entities;
+using FNStore.Domain.Helpers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
