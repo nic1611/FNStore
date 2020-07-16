@@ -27,8 +27,8 @@ namespace FNStore.Data.Maps
 
             builder.Property(c => c.Email)
                     .HasColumnType("varchar(80)")
-                    .IsRequired();
-                    ;
+                    .IsRequired()
+                    .IsUnicode();
 
             builder.Property(c => c.Senha)
                 .HasColumnType("char(88)")

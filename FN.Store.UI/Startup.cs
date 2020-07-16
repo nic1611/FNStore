@@ -1,4 +1,6 @@
 using FNStore.Data.EF;
+using FNStore.Data.EF.Repositories;
+using FNStore.Domain.Contracts.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +28,10 @@ namespace FN.Store.UI
             services.AddControllersWithViews();
 
             services.AddScoped<FNStoreDataContext>();
+            services.AddScoped<IProdutoRepository, ProdutoRepositoryEF>();
+            services.AddScoped<ITipoDeProdutoRepository, TipoDeProdutoRepositoryEF>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepositoryEF>();
+            services.AddScoped(typeof(IRepository<>), typeof(RepositoryEF<>));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options => options.LoginPath = "/Conta/Login");
