@@ -10,5 +10,6 @@ namespace FNStore.Domain.Contracts.Repositories
     public interface IProdutoRepository : IRepository<Produto>
     {
         IEnumerable<Produto> GetByNameContains(string contains);
+        IEnumerable<Produto> GetAll();
     }
 }

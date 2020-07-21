@@ -1,4 +1,5 @@
 using FNStore.Data.EF;
+using FNStore.Domain.Contracts.Repositories;
 using FNStore.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,18 +12,20 @@ namespace FN.Store.UI.Controllers
     [Authorize]
     public class ProdutosController : Controller
     {
-        private readonly FNStoreDataContext ctx;
+        private readonly ITipoDeProdutoRepository repTipoDeProduto;
+        private readonly IProdutoRepository repProduto;
 
-        public ProdutosController(FNStoreDataContext ctx)
+        public ProdutosController(ITipoDeProdutoRepository repTipoDeProduto, IProdutoRepository repProduto)
         {
-            this.ctx = ctx;
+            this.repTipoDeProduto = repTipoDeProduto;
+            this.repProduto = repProduto;
         }
 
         public ViewResult Index()
         {
             IList<Produto> produtos = null;
 
-            produtos = ctx.Produtos.Include(e => e.TipoDeProduto).ToList();
+            produtos = repProduto.GetAll().ToList();
 
             return View(produtos);
         }
@@ -33,10 +36,10 @@ namespace FN.Store.UI.Controllers
             Produto produto = new Produto();
             if (id != null)
             {
-                produto = ctx.Produtos.Find(id);
+                produto = repProduto.Get((int) id);
             }
 
-            var tipos = ctx.TipoDeProdutos.ToList();
+            var tipos = repTipoDeProduto.Get();
             ViewBag.Tipos = tipos;
             return View(produto);
         }
@@ -48,17 +51,16 @@ namespace FN.Store.UI.Controllers
             {
                 if (produto.Id == 0)
                 {
-                    ctx.Add(produto);
+                    repProduto.Add(produto);
                 }
                 else
                 {
-                    ctx.Entry(produto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    repProduto.Edit(produto);
                 }
 
-                ctx.SaveChanges();
                 return RedirectToAction("Index");
             }
-            var tipos = ctx.TipoDeProdutos.ToList();
+            var tipos = repTipoDeProduto.Get();
             ViewBag.Tipos = tipos;
             return View(produto);
 
@@ -67,13 +69,12 @@ namespace FN.Store.UI.Controllers
         [HttpDelete]
         public IActionResult DelProd(int id)
         {
-            var produto = ctx.Produtos.Find(id);
+            var produto = repProduto.Get(id);
             if (produto == null)
             {
                 return NotFound();
             }
-            ctx.Produtos.Remove(produto);
-            ctx.SaveChanges();
+            repProduto.Delete(produto);
 
             return Ok();
         }
@@ -81,7 +82,8 @@ namespace FN.Store.UI.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            ctx.Dispose();
+            repProduto.Dispose();
+            repProduto.Dispose();
         }
     }
 }

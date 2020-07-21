@@ -1,5 +1,6 @@
 ﻿using FN.Store.UI.Models;
 using FNStore.Data.EF;
+using FNStore.Domain.Contracts.Repositories;
 using FNStore.Domain.Entities;
 using FNStore.Domain.Helpers;
 using Microsoft.AspNetCore.Authentication;
@@ -15,11 +16,11 @@ namespace FN.Store.UI.Controllers
 {
     public class ContaController : Controller
     {
-        private readonly FNStoreDataContext ctx;
+        private readonly IUsuarioRepository repUsuario;
 
-        public ContaController(FNStoreDataContext ctx)
+        public ContaController(IUsuarioRepository repUsuario)
         {
-            this.ctx = ctx;
+            this.repUsuario = repUsuario;
         }
 
         [HttpGet]
@@ -35,7 +36,8 @@ namespace FN.Store.UI.Controllers
 
             if (ModelState.IsValid)
             {
-                var usuario = ctx.Usuarios.FirstOrDefault(u => u.Email.ToLower() == login.Email.ToLower());
+                //var usuario = ctx.Usuarios.FirstOrDefault(u => u.Email.ToLower() == login.Email.ToLower());
+                var usuario = repUsuario.Get(login.Email);
 
                 if (usuario == null)
                 {
@@ -92,7 +94,7 @@ namespace FN.Store.UI.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            ctx.Dispose();
+            repUsuario.Dispose();
         }
     }
 }

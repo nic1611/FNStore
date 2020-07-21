@@ -1,5 +1,6 @@
 ﻿using FNStore.Domain.Contracts.Repositories;
 using FNStore.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace FNStore.Data.EF.Repositories
     {
         public ProdutoRepositoryEF(FNStoreDataContext ctx) : base(ctx)
         { }
+
+        public IEnumerable<Produto> GetAll()
+        {
+           return _ctx.Produtos.Include(e => e.TipoDeProduto).ToList();
+        }
 
         public IEnumerable<Produto> GetByNameContains(string contains)
         {
