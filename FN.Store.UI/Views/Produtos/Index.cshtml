@@ -20,13 +20,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (FNStore.Domain.Entities.Produto produto in Model)
+            @foreach (FN.Store.UI.ViewModels.Produtos.Index.ProdutoIndexVM produto in Model)
             {
                 <tr id="produto-@produto.Id">
                     <th scope="row">@produto.Id</th>
                     <td>@produto.Nome</td>
-                    <td>@produto.Preco</td>
-                    <td>@produto.TipoDeProduto.Nome</td>
+                    <td>@produto.Preco.ToString("C2")</td>
+                    <td>@produto.Tipo</td>
                     <td>@produto.Qtde</td>
                     <td>@produto.DataCadastro</td>
                     <td>
