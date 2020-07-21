@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Conta\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\FNStore.Data\FNStore.Data.csproj" />
   </ItemGroup>
 
