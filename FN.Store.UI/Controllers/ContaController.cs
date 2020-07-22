@@ -1,5 +1,4 @@
-﻿using FN.Store.UI.Models;
-using FNStore.Data.EF;
+﻿using FN.Store.UI.ViewModels.Conta.Login;
 using FNStore.Domain.Contracts.Repositories;
 using FNStore.Domain.Entities;
 using FNStore.Domain.Helpers;
@@ -8,7 +7,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
