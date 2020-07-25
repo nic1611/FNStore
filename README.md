@@ -1,5 +1,5 @@
 # Covid-monitor
-##### Projeto com o objetivo de cadastrar, remover e atuaalizar produtos diversificados. Usando autenticação por cookie.
+##### Projeto com o objetivo de cadastrar, remover e atualizar produtos diversificados, utilisando autenticação por cookies.
 ![Alt text](/img/Screenshot_1.png?raw=true "Tela de produto")
 ![Alt text](/img/Screenshot_2.png?raw=true "Tela de login")
 ![Alt text](/img/Screenshot_3.png?raw=true "Tela de edição/criação")
@@ -12,8 +12,6 @@
 ##### Após clonar o repositório digite os comandos: 
 
 > dotnet build
-
-> npm run serve
 
 ## Tecnologias
 [razor](https://docs.microsoft.com/pt-br/aspnet/core/mvc/views/razor?view=aspnetcore-3.1)
