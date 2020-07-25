@@ -1,12 +1,15 @@
 # Covid-monitor
 ##### Projeto com o objetivo de cadastrar, remover e atualizar produtos diversificados, utilisando autenticação por cookies.
+
+## Localize
+* [Imagens](#imagens)
+* [Instalação](#instalação)
+* [Tecnologias](#tecnologias)
+
+## Imagens
 ![Alt text](/img/Screenshot_1.png?raw=true "Tela de produto")
 ![Alt text](/img/Screenshot_2.png?raw=true "Tela de login")
 ![Alt text](/img/Screenshot_3.png?raw=true "Tela de edição/criação")
-
-## Localize
-* [Instalação](#instalação)
-* [Tecnologias](#tecnologias)
 
 ## Instalação
 ##### Após clonar o repositório digite os comandos: 
