@@ -1,5 +1,5 @@
 # Covid-monitor
-##### Projeto com o objetivo de cadastrar, remover e atualizar produtos diversificados, utilisando autenticação por cookies.
+##### Projeto com o objetivo de cadastrar, remover e atualizar produtos diversificados, utilizando autenticação por cookies.
 
 ## Localize
 * [Imagens](#imagens)
