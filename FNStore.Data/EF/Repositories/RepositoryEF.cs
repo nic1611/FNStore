@@ -1,6 +1,5 @@
 ﻿using FNStore.Domain.Contracts.Repositories;
 using FNStore.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,7 +33,7 @@ namespace FNStore.Data.EF.Repositories
 
         public void Edit(T entity)
         {
-            _ctx.Entry(entity).State = EntityState.Modified;
+            _ctx.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             Save();
         }
 

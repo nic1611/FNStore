@@ -2,16 +2,19 @@
 using FNStore.Domain.Entities;
 using FNStore.Domain.Helpers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using System.Collections.Generic;
+
 
 namespace FNStore.Data.EF
 {
     public class FNStoreDataContext : DbContext
     {
-        public FNStoreDataContext(
-            DbContextOptions<FNStoreDataContext> options
-            ) : base(options)
+        public FNStoreDataContext(DbContextOptions options) : base(options)
         {
+            System.AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            System.AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+
             Database.EnsureDeleted();
             Database.EnsureCreated();
             var alimento = new TipoDeProduto() { Nome = "Alimento" };
@@ -43,9 +46,23 @@ namespace FNStore.Data.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // modelBuilder.RegisterEntityType(typeof(UsuarioMap));
+            // modelBuilder.RegisterEntityType(typeof(TipoDeProdutoMap));
+            // modelBuilder.RegisterEntityType(typeof(ProdutoMap));
+
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new TipoDeProdutoMap());
             modelBuilder.ApplyConfiguration(new ProdutoMap());
+        }
+    }
+
+    public class FNStoreDataContextFactory : IDesignTimeDbContextFactory<FNStoreDataContext>
+    {   
+        public FNStoreDataContext CreateDbContext(string[] args)
+        {   
+            var optionsBuilder = new DbContextOptionsBuilder<FNStoreDataContext>();
+            optionsBuilder.UseNpgsql(@"User ID=postgres;Password=Postgres2023!;Host=localhost;Port=15432;Database=fnstore;Pooling=true;Connection Lifetime=10000;");
+            return new FNStoreDataContext(optionsBuilder.Options);
         }
     }
 }
