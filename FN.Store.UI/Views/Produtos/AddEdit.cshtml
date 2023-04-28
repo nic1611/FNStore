@@ -4,52 +4,62 @@
     ViewBag.Title = $"{(Model.Id == 0 ? "Adicionar" : "Editar")} Produto";
 }
 
-<h2>@ViewBag.Title</h2>
+<h1>@ViewBag.Title</h1>
 
-<form action="/Produtos/AddEdit" method="post">
-    <div class="form-group">
-        <label for="txtNome">Nome:</label>
-        <input class="form-control" type="text" name="nome" id="txtNome" value="@Model.Nome" />
-        <small>
-            @Html.ValidationMessageFor(m => m.Nome, null, new { @class = "text-danger" })
-        </small>
+<form caction="/Produtos/AddEdit" method="post">
+    <div class="field">
+        <label class="label" for="txtNome">Nome:</label>
+        <div class="content">
+            <input class="input" type="text" name="nome" id="txtNome" value="@Model.Nome" />
+            <small>
+                @Html.ValidationMessageFor(m => m.Nome, null, new { @class = "is-danger" })
+            </small>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Preço:</label>
-        <input class="form-control" type="text" name="preco" value="@Model.Preco" />
+    <div class="field">
+        <label class="label">Preço:</label>
+        <input class="input" type="text" name="preco" value="@Model.Preco" />
         <small>
-            @Html.ValidationMessageFor(m => m.Preco, null, new { @class = "text-danger" })
-        </small>
-
-    </div>
-    <div class="form-group">
-        <label>Tipo:</label>
-        <select name="TiposDeProdutoId" class="form-control">
-            <option value="">Selecione... </option>
-            @foreach (FNStore.Domain.Entities.TipoDeProduto tipo in ViewBag.Tipos)
-            {
-                <option @(tipo.Id == Model.TipoDeProdutoId ? "selected" : "")
-                        value="@tipo.Id">
-                    @tipo.Nome
-                </option>
-            }
-        </select>
-        <small>
-            @Html.ValidationMessageFor(m => m.TipoDeProdutoId, null, new { @class = "text-danger" })
+            @Html.ValidationMessageFor(m => m.Preco, null, new { @class = "is-danger" })
         </small>
 
     </div>
-    <div class="form-group">
-        <label>Quantidade:</label>
-        <input class="form-control" type="text" name="qtde" value="@Model.Qtde" />
+    <div class="field">
+        <label class="label">Tipo:</label>
+        <div class="control">
+            <div class="select">
+                <select name="TiposDeProdutoId">
+                    <option value="">Selecione... </option>
+                    @foreach (FNStore.Domain.Entities.TipoDeProduto tipo in ViewBag.Tipos)
+                    {
+                        <option @(tipo.Id == Model.TipoDeProdutoId ? "selected" : "")
+                                value="@tipo.Id">
+                            @tipo.Nome
+                        </option>
+                    }
+                </select>
+            </div>
+        </div>
         <small>
-            @Html.ValidationMessageFor(m => m.Qtde, null, new { @class = "text-danger" })
+            @Html.ValidationMessageFor(m => m.TipoDeProdutoId, null, new { @class = "is-danger" })
         </small>
 
     </div>
-    <div class="form-group">
-        <button class="btn btn-outline-secondary" type="submit">Salvar</button>
-        <a class="btn btn-outline-info" href="@Url.Action("Index")">Voltar</a>
+    <div class="field">
+        <label class="label">Quantidade:</label>
+        <input class="input" type="text" name="qtde" value="@Model.Qtde" />
+        <small>
+            @Html.ValidationMessageFor(m => m.Qtde, null, new { @class = "is-danger" })
+        </small>
+
+    </div>
+    <div class="field is-grouped">
+        <div class="control">
+            <button class="button is-link" type="submit">Salvar</button>
+        </div>
+        <div class="control">
+            <button class="button is-link is-light" href="@Url.Action("Index")">Voltar</button>
+        </div>
     </div>
 </form>
 

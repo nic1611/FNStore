@@ -2,12 +2,12 @@
     ViewBag.Title = $"Listagem de produtos";
 }
 
-<h2>@ViewBag.Title</h2>
+<h1>@ViewBag.Title</h2>
 <div>
-    <a href="@Url.Action("AddEdit")" class="btn btn-primary">Novo produto</a>
+    <a href="@Url.Action("AddEdit")" class="button is-primary is-rounded">Novo produto</a>
 </div>
-<div class="mt-4">
-    <table class="table table-striped">
+<div class="mt-4 mx-auto">
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -30,8 +30,8 @@
                     <td>@produto.Qtde</td>
                     <td>@produto.DataCadastro</td>
                     <td>
-                        <a href="@Url.Action("AddEdit", new { id=produto.Id})" class="btn btn-sm btn-outline-primary">Editar</a>
-                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="DelProd(@produto.Id, '@produto.Nome')">Deletar</button>
+                        <a href="@Url.Action("AddEdit", new { id=produto.Id})" class="button is-info is-rounded is-outlined is-small">Editar</a>
+                        <button type="button" class="button is-danger is-rounded is-small" onclick="DelProd(@produto.Id, '@produto.Nome')">Deletar</button>
                     </td>
                 </tr>
             }

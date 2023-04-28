@@ -5,26 +5,30 @@
 
 <h2>@ViewBag.Title</h2>
 <form method="post">
-    <div class="form-group">
-        <label>E-mail</label>
-        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", autofocus = "" })
+    <div class="field">
+        <label class="label">E-mail</label>
+        @Html.TextBoxFor(model => model.Email, new { @class = "input", autofocus = "" })
         <small>
-            @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Email, null, new { @class = "is-danger" })
         </small>
     </div>
-    <div class="form-group">
-        <label>E-mail</label>
-        @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", autofocus = "", type="password"})
+    <div class="field">
+        <label class="label">E-mail</label>
+        @Html.TextBoxFor(model => model.Senha, new { @class = "input", autofocus = "", type="password"})
         <small>
-            @Html.ValidationMessageFor(model => model.Senha , null, new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Senha , null, new { @class = "is-danger" })
         </small>
     </div>
-    <div class="form-group">
-        @Html.CheckBoxFor(model => model.PermanecerLogado, new { @class = "form-check-input", autofocus = "" })
-        @Html.LabelFor(model => model.PermanecerLogado)
+    <div class="field">
+        @Html.CheckBoxFor(model => model.PermanecerLogado, new { autofocus = "" })
+        @Html.LabelFor(model => model.PermanecerLogado, new { @class = "checkbox" })
     </div>
-    <div class="form-group form-check">
-        <button class="btn btn-outline-secondary">Login</button>
-        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-warning">Voltar</a>
+    <div class="field is-grouped">
+        <div class="control">
+            <button class="button is-link" type="submit">Login</button>
+        </div>
+        <div class="control">
+            <button class="button is-link is-light" href="@Url.Action("Index", "Home")">Voltar</button>
+        </div>
     </div>
 </form>

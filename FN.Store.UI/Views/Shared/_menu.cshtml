@@ -1,49 +1,73 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <a class="navbar-brand" href="#">FN Store</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("Index","Home")">Página Inicial</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("Index","Produtos")">Produtos</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("Sobre","Home")">Sobre</a>
-            </li>
-
-        </ul>
-
-        <ul class="navbar-nav ml-auto">
-
+﻿<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="@Url.Action("Index","Home")">FN Store</a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="@Url.Action("Index","Home")">Página Inicial</a>
+            <a class="navbar-item" href="@Url.Action("Index","Produtos")">Produtos</a>
+            <a class="navbar-item" href="@Url.Action("Sobre","Home")">Sobre</a>
+        </div>
+        <div class="navbar-end">
             @if (User.Identity.IsAuthenticated)
             {
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
                         @User.Identity.Name
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Trocar Senha</a>
-                        <a class="dropdown-item" href="#">Meu Perfil</a>
-
-                        <div class="dropdown-divider" href="#"></div>
-
-                        <a class="dropdown-item" href="@Url.Action("LogOut", "Conta")">LogOut</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="#">Trocar Senha</a>
+                        <a class="navbar-item" href="#">Meu Perfil</a>
+                        <div class="navbar-divider" href="#"></div>
+                        <a class="navbar-item" href="@Url.Action("LogOut", "Conta")">LogOut</a>
                     </div>
-                </li>
+                </div>
             }
             else
             {
-                <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("Login","Conta")">Efetuar Login</a>
-                </li>
+                <a class="navbar-item" href="@Url.Action("Login","Conta")">Efetuar Login</a>
             }
-        </ul>
-
-
+        </div>
     </div>
 </nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+
+});
+
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+});
+</script>
