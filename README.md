@@ -1,4 +1,4 @@
-# Covid-monitor
+# FNStore
 ##### Projeto com o objetivo de cadastrar, remover e atualizar produtos diversificados, utilizando autenticação por cookies.
 
 ## Localize
