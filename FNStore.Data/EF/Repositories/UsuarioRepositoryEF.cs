@@ -1,5 +1,6 @@
 ﻿using FNStore.Domain.Contracts.Repositories;
 using FNStore.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FNStore.Data.EF.Repositories
@@ -11,7 +12,7 @@ namespace FNStore.Data.EF.Repositories
 
         public Usuario Get(string email)
         {
-            return _ctx.Usuarios.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+            return _ctx.Usuarios.AsNoTracking().FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
         }
     }
 }

@@ -13,15 +13,15 @@
         </small>
     </div>
     <div class="field">
-        <label class="label">E-mail</label>
+        <label class="label">Senha</label>
         @Html.TextBoxFor(model => model.Senha, new { @class = "input", autofocus = "", type="password"})
         <small>
             @Html.ValidationMessageFor(model => model.Senha , null, new { @class = "is-danger" })
         </small>
     </div>
     <div class="field">
+        <label class="checkbox">Permanecer logado</label>
         @Html.CheckBoxFor(model => model.PermanecerLogado, new { autofocus = "" })
-        @Html.LabelFor(model => model.PermanecerLogado, new { @class = "checkbox" })
     </div>
     <div class="field is-grouped">
         <div class="control">

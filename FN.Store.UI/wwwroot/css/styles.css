@@ -1,0 +1,18 @@
+body{
+    background-color: #F6F6F6;
+}
+
+#fnstore{
+    background-image: url('/images/kindpng_94516.png');
+    height: 50%;
+    background-position: center;
+    background-size: cover;
+}
+
+.color-second{
+    background-color: #FFE2E2;
+}
+
+.color-primary{
+    background-color: #F6F6F6;
+}

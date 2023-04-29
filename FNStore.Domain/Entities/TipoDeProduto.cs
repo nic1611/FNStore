@@ -8,7 +8,9 @@ namespace FNStore.Domain.Entities
     {
         public string Nome { get; set; }
 
-        public virtual ICollection<Produto> Produtos { get; set; }
+        public ICollection<Produto> Produtos { get; set; } = null;
+
+        public TipoDeProduto(){}
     }
 
 }

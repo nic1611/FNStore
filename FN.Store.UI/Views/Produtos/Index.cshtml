@@ -4,10 +4,10 @@
 
 <h1>@ViewBag.Title</h2>
 <div>
-    <a href="@Url.Action("AddEdit")" class="button is-primary is-rounded">Novo produto</a>
+    <a href="@Url.Action("AddEdit")" class="button is-primary">Novo produto</a>
 </div>
-<div class="mt-4 mx-auto">
-    <table class="table">
+<div class="mt-2 table-container">
+    <table class="table is-hoverable is-fullwidth">
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -28,10 +28,10 @@
                     <td>@produto.Preco.ToString("C2")</td>
                     <td>@produto.Tipo</td>
                     <td>@produto.Qtde</td>
-                    <td>@produto.DataCadastro</td>
+                    <td>@produto.DataCadastro.ToString("dd/MM/yyyy h:mm")</td>
                     <td>
-                        <a href="@Url.Action("AddEdit", new { id=produto.Id})" class="button is-info is-rounded is-outlined is-small">Editar</a>
-                        <button type="button" class="button is-danger is-rounded is-small" onclick="DelProd(@produto.Id, '@produto.Nome')">Deletar</button>
+                        <a href="@Url.Action("AddEdit", new { id=produto.Id})" class="button is-info is-outlined is-small">Editar</a>
+                        <button type="button" class="button is-danger is-small" onclick="DelProd(@produto.Id, '@produto.Nome')">Deletar</button>
                     </td>
                 </tr>
             }

@@ -2,20 +2,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="~/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="~/css/styles.css">
     <title>FN Store | @ViewBag.Title</title>
 </head>
 <body>
     @Html.Partial("_menu")
-    <div class="container">
-        <div class="row position-relative mt-3">
-            <div class="col"></div>
-            <div class="col-8">
-                @RenderBody()
+    <section class="section color-second">
+        <div class="container">
+            <div class="is-flex is-justify-content-space-around is-align-content-center mb-5">
+                <div class="is-flex has-text-centered is-size-2 is-size-4-mobile is-align-items-center">
+                    <h3>FNStore, a sua melhor loja virtual</h3>
+                </div>
+                <div class="is-align-items-center">
+                    <img height="300px" width="300px" src="~/images/kindpng_94516.png" alt="">
+                </div>
             </div>
-            <div class="col"></div>
         </div>
-    </div>
+    </section>
+    <section class="section color-primary">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
     @RenderSection("scripts", false)
 </body>
 </html>

@@ -10,7 +10,10 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<FNStoreDataContext>(options => options.UseNpgsql(@"User ID=postgres;Password=Postgres2023!;Host=localhost;Port=15432;Database=fnstore;Pooling=true;Connection Lifetime=10000;"));
+builder.Services.AddDbContext<FNStoreDataContext>(options => {
+        options.UseNpgsql(@"User ID=postgres;Password=Postgres2023!;Host=localhost;Port=15432;Database=fnstore;Pooling=true;Connection Lifetime=10000;");
+        options.EnableSensitiveDataLogging();
+    });
 
 builder.Services.AddControllersWithViews();
 
@@ -41,6 +44,7 @@ else
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 app.UseStaticFiles();
 

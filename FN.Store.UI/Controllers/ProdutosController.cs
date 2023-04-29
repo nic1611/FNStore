@@ -4,6 +4,8 @@ using FN.Store.UI.ViewModels.Produtos.Index.Maps;
 using FNStore.Domain.Contracts.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 
 namespace FN.Store.UI.Controllers
 {
@@ -30,12 +32,12 @@ namespace FN.Store.UI.Controllers
         public ViewResult AddEdit(int? id)
         {
             var produto = new ProdutoAddEditVM();
-            if (id != null)
-            {
-                produto = repProduto.Get((int)id).ToProdutoAddEditVM();
-            }
+            if (id.HasValue)
+                produto = repProduto.Get(id.Value).ToProdutoAddEditVM();
+            
 
             var tipos = repTipoDeProduto.Get();
+            Console.WriteLine($"tipo: {tipos.ToList().First().Nome}");
             ViewBag.Tipos = tipos;
             return View(produto);
         }
@@ -43,16 +45,21 @@ namespace FN.Store.UI.Controllers
         [HttpPost]
         public IActionResult AddEdit(ProdutoAddEditVM produtoVM)
         {
-            var produto = produtoVM.ToProduto();
-
+            FNStore.Domain.Entities.Produto produto = null;
             if (ModelState.IsValid)
             {
-                if (produto.Id == 0)
+                if (produtoVM.Id == 0)
                 {
+                    produto = produtoVM.ToProduto();
                     repProduto.Add(produto);
                 }
                 else
                 {
+                    produto = repProduto.Get(produtoVM.Id);
+                    produto.Nome = produtoVM.Nome;
+                    produto.Preco = produtoVM.Preco;
+                    produto.Qtde = produtoVM.Qtde;
+                    produto.TipoDeProdutoId = produtoVM.TipoDeProdutoId;
                     repProduto.Edit(produto);
                 }
 

@@ -1,5 +1,6 @@
 ﻿using FNStore.Domain.Contracts.Repositories;
 using FNStore.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,12 +17,12 @@ namespace FNStore.Data.EF.Repositories
 
         public IEnumerable<T> Get()
         {
-            return _ctx.Set<T>().ToList();
+            return _ctx.Set<T>().AsNoTracking().ToList();
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
-            return _ctx.Set<T>().Find(id);
+            return _ctx.Set<T>().AsNoTracking().FirstOrDefault(f => f.Id == id);
         }
 
 
@@ -31,9 +32,17 @@ namespace FNStore.Data.EF.Repositories
             Save();
         }
 
-        public void Edit(T entity)
+        public virtual void Edit(T entity)
         {
-            _ctx.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            bool tracking = _ctx.Set<T>().Any(x => x.Id == entity.Id);
+            if (!tracking)
+            {
+                System.Console.WriteLine("tracked");
+                _ctx.Update<T>(entity);
+            }
+
+            _ctx.Entry<T>(entity).State = EntityState.Modified;
+
             Save();
         }
 
@@ -43,7 +52,7 @@ namespace FNStore.Data.EF.Repositories
             Save();
         }
 
-        private void Save()
+        protected void Save()
         {
             _ctx.SaveChanges();
         }
